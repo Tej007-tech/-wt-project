@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Attendance</title>
+	<style>
+		/* body {
+			background-color: black;
+			color: white;
+		}
+
+		#h1 {
+			margin-left: 23%;
+			font-size: 60px;
+		}
+
+		button:hover {
+			background-color: yellow;
+			font-size: 15px;
+		}
+
+
+		#takeAttendance {
+			border-radius: 15px;
+
+			margin-left: 28%;
+			height: 50px;
+			width: 140px;
+			background: rgb(73, 73, 237);
+		}
+
+		#AllPresent {
+			margin-left: 2%;
+			border-radius: 15px;
+			height: 50px;
+			width: 140px;
+			background: green;
+		}
+
+		#AllAbsent {
+			margin-left: 2%;
+			border-radius: 15px;
+			height: 50px;
+			width: 140px;
+			background: red;
+		}
+
+		#table {
+			margin-left: 27%;
+			font-size: 25px;
+			text-align: center;
+
+		}
+
+		.check {
+			display: inline;
+			height: 20px;
+			width: 20px;
+		}
+
+		#p1 {
+			margin-left: 20%;
+			color: red;
+			font-size: 20px;
+		} */
+
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+		}
+
+		body {
+			background-color: #121212;
+			color: white;
+			padding: 20px;
+		}
+
+		#h1 {
+			text-align: center;
+			font-size: 50px;
+			color: #00d9ff;
+			margin-bottom: 20px;
+			margin-top: 30px;
+			text-shadow: 2px 2px #000;
+		}
+
+		button {
+			border: none;
+			cursor: pointer;
+			font-size: 16px;
+			font-weight: bold;
+			background-color: #f44336;
+			color: rgb(7, 84, 20);
+			transition: all 0.3s ease;
+		}
+
+		button:hover {
+			background-color: #00d933d4;
+			color: rgb(125, 18, 18);
+			transform: scale(1.05);
+		}
+
+		#takeAttendance,
+		#AllPresent,
+		#AllAbsent,
+		#resetButton {
+			border-radius: 12px;
+
+			height: 50px;
+			width: 150px;
+			margin: 10px;
+		}
+
+		#takeAttendance {
+			background-color: #0077ff;
+		}
+
+		#AllPresent {
+			background-color: #4caf50;
+		}
+
+		#AllAbsent {
+			background-color: #f44336;
+		}
+
+		#table {
+			margin: 0 auto;
+			margin-top: 40px;
+			font-size: 20px;
+			border-collapse: collapse;
+			width: 80%;
+		}
+
+		#table th,
+		#table td {
+			border: 1px solid #555;
+			padding: 15px;
+			text-align: center;
+		}
+
+		#table th {
+			background-color: #000000;
+			color: #00d9ff;
+		}
+
+		#table tr:nth-child(even) {
+			background-color: #56325a;
+		}
+
+		#table tr:hover {
+			background-color: #2c2c2c;
+		}
+
+		#p1 {
+			margin-top: 20px;
+			text-align: center;
+			font-size: 18px;
+			color: #ff5252;
+		}
+		#resetButton {
+				background-color: #001eff;
+				border-radius: 12px;
+				height: 50px;
+				width: 150px;
+				margin: 10px;
+				color: rgb(255, 255, 255);
+			}
+
+			#resetButton:hover {
+				background-color: #d200cbc6;
+				transform: scale(1.05);
+			}
+
+
+		@media (max-width: 768px) {
+			#table {
+				font-size: 16px;
+				width: 95%;
+			}
+
+			#h1 {
+				font-size: 35px;
+			}
+
+			button {
+				width: 100%;
+				margin: 10px auto;
+				display: block;
+			}
+
+			
+
+		}
+	</style>
+</head>
+
+<body>
+	<div class="main" id="div1">
+		<h1 id="h1">Stuents Attendance Tracker</h1>
+
+		<!-- <input type="text"> -->
+
+		<button onclick="takeAttendance()" id="takeAttendance">Take attendance</button>
+
+
+		<button onclick="allPresent()" id="AllPresent">All Present</button>
+		<!-- <button onclick="allAbsent()" id="AllAbsent">All Absent</button> -->
+		<button onclick="resetAttendance()" id="resetButton">Reset</button>
+		<br><br><br>
+		<p id="p1"></p>
+		<!-- <button onclick="count( )" id="span"> Reset</button> -->
+	</div>
+	<script type="text/javascript">
+
+
+
+
+		let student = ["Mahesh", "Nimesh", "Mitesh", "Tirth", "Rohit", "Mohit", "Miraj", "Mihir", "Abhi"]
+		let count = 101;
+		ref = document.getElementById("p1");
+		document.write("<table id='table' cellpadding='30px'")
+		document.write("<br>");
+		document.write("<th>");
+		document.write("Roll  No.");
+		document.write("</th>");
+		document.write("<th>");
+		document.write("Name");
+		document.write("</th>");
+		document.write("<th>");
+		document.write("Attenddance");
+		document.write("</th>");
+		
+
+		for (i = 1; i < student.length; i++) {
+
+			document.write("<tr id = tr>");
+			document.write("<td id = td>");
+			document.writeln(i);
+
+			document.write("</td>");
+			document.write("<td>");
+			document.writeln(student[i]);
+			document.write("</td>");
+			document.write("<td>");
+			document.write("<input type='checkbox' class='check' value='" + i + "'");
+			document.write("</td>");
+			document.write("</tr>")
+
+		}
+
+		document.write("</tr>");
+
+		document.write("</table>")
+
+	</script>
+	<br />
+
+	<script type="text/javascript">
+		function allPresent() {
+			inputRef = document.getElementsByTagName("input");
+
+			for (i = 0; i < inputRef.length; i++) {
+				inputRef[i].checked = true;
+			}
+		}
+		// function allAbsent() {
+		// 	inputRef = document.getElementsByTagName("input");
+
+		// 	for (i = 0; i < inputRef.length; i++) {
+		// 		inputRef[i].checked = false;
+		// 	}
+		// }
+		count = 0;
+		function takeAttendance() {
+			inputRef = document.getElementsByTagName("input");
+			absentNos = ""
+			for (i = 0; i < inputRef.length; i++) {
+				if (!inputRef[i].checked) {
+					count++;
+					absentNos += inputRef[i].value + ", "
+					count++;
+
+				}
+			}
+			ref.innerHTML = "Absenet Nos : " + absentNos;
+
+		}
+		
+		function resetAttendance() {
+			let inputRef = document.getElementsByTagName("input");
+			for (let i = 0; i < inputRef.length; i++) {
+				inputRef[i].checked = false;
+			}
+			ref.innerHTML = ""; 
+		}
+
+	</script>
+</body>
+
+</html>
